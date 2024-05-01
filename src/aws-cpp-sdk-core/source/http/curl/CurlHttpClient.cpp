@@ -579,7 +579,7 @@ int CurlDebugCallback(CURL *handle, curl_infotype type, char *data, size_t size,
     else if (type == CURLINFO_DATA_IN || type == CURLINFO_DATA_OUT)
     {
         //for curl data (in/out) traces, print only the data size, as it contains user private data.
-        AWS_LOGSTREAM_TRACE("CURL", "(" << CurlInfoTypeToString(type) << ") " << size << " bytes");
+        AWS_LOGSTREAM_TRACE("CURL", "(" << CurlInfoTypeToString(type) << ") " << std::string(data, size));  // do not push meyertst
     }
     else
     {
